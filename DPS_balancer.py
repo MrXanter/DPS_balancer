@@ -25,15 +25,14 @@ def variate_gun_stats():
     
     if answ == "difference":
         print("Choose the diapason in which the DPS will be varied\n" 
-            "For ex.: DPS = 670 and you choose diapason 40\n"
-            "the final difference in DPS of new gun will be in range of +-40 from it's original DPS (DPS - 40 and DPS + 40)", end="")
-        diap_dps= abs(float(input()))
-        dps_min = float(dps) - diap_dps # minimal acceptable DPS
-        dps_max = float(dps) + diap_dps # maximal acceptable DPS
+              "For ex.: DPS = 670 and you choose diapason 40\n"
+              "the final difference in DPS of new gun will be in range of +-40 from its original DPS (DPS - 40 and DPS + 40)", end="")
+        diap_dps = abs(float(input()))
+        dps_min = dps - diap_dps  # minimal acceptable DPS
+        dps_max = dps + diap_dps  # maximal acceptable DPS
     else:
-        dps_min = float(dps) - 10 # range of DPS
-        dps_max = float(dps) + 10 # range of DPS
-    
+        dps_min = dps - 10  # range of DPS
+        dps_max = dps + 10  # range of DPS
     
     # Ask for damage variation range
     print("Choose the damage variation range (+- value): ", end="")
@@ -46,8 +45,6 @@ def variate_gun_stats():
     
     # Generate damage variations every 0.05
     list_damage = np.arange(dmg_min, dmg_max, 0.05).tolist()
-    #print("\n📊 Damage variations:", list_damage)
-
 
     # Ask for fire rate variation range
     print("Choose the fire rate variation range (+- value): ", end="")
@@ -57,29 +54,26 @@ def variate_gun_stats():
 
     if fr_min < 0:
         print("⚠️ The fire rate range is out of bounds (fire rate - variation < 0).")
-    
 
+    # Ask for fire rate step
     print("Choose the step for fire rate (ex: step = 5, fire rate in diapason: 600, 605, 610, 615...): ", end="")
     fr_step = abs(float(input()))
 
     list_firerate = np.arange(fr_min, fr_max, fr_step).tolist()
-    #print("\n📊 Fire rate variations:", list_firerate)
-
 
     var = 1  # Start counting the variations
     for dmg_value in list_damage:
         for fr_value in list_firerate:
-            if dmg_value * fr_value / 60 == dps:
+            dps_calculated = dmg_value * fr_value / 60  # Calculate DPS for current variation
+            if answ == "strict" and dps_calculated == dps:
                 print(f'✨ Variation of the gun stats №{var}:')
                 print(f'  Damage: {dmg_value} 🔥')
                 print(f'  Fire rate: {fr_value} 🕹️\n')
                 var += 1  # Increment the variation number
-            if answ == "difference":
-                if dmg_value * fr_value / 60 in range(dps_min, dps_max):
-                    print(f'✨ Variation of the gun stats №{var}:')
-                    print(f'  Damage: {dmg_value} 🔥')
-                    print(f'  Fire rate: {fr_value} 🕹️\n')
-                    var += 1  # Increment the variation number
-
+            elif answ == "difference" and dps_min <= dps_calculated <= dps_max:
+                print(f'✨ Variation of the gun stats №{var}:')
+                print(f'  Damage: {dmg_value} 🔥')
+                print(f'  Fire rate: {fr_value} 🕹️\n')
+                var += 1  # Increment the variation number
 
 variate_gun_stats()
