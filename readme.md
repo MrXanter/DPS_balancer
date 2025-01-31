@@ -1,5 +1,5 @@
 # 🔫 DPS Balancer Script
-
+# THE SCRIPT IS UNFINISHED RIGHT NOW, and doesn't make full sense of its work
 ## 📦 Requirements
 Before using the script, make sure to install the required dependencies:
 
