@@ -35,4 +35,8 @@ def variate_gun_stats():
     
     #print("\n📊 Damage variations:", list_damage)
 
-variate_gun_stats()
+    print("Choose the step for fire rate (ex: step = 5, fire rate in diapason: 600, 605, 610, 615...): ", end="")
+    fr_step = abs(float(input()))
+
+    list_firerate = np.arange(fr_min, fr_max, fr_step).tolist()
+    print("\n📊 Damage variations:", list_firerate)
