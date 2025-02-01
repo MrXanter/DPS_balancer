@@ -19,7 +19,9 @@ Before using the script, make sure to install the required dependencies:
 
 ## 🛠️ Usage
 1️⃣ The script will clear the terminal screen and display the first page of results.
+
 2️⃣ Each page shows a set of gun stat variations, including damage, fire rate, and DPS.
+
 3️⃣ Use the following commands to navigate through the pages:
  - [N] Next: Go to the next page.
  - [P] Previous: Go to the previous page.
@@ -47,10 +49,15 @@ Before using the script, make sure to install the required dependencies:
 The script requests the following input data:
 
 1️⃣ **Damage (int or float):** The amount of damage the gun deals per shot.
+
 2️⃣ **Fire rate (int or float):** The number of shots the gun fires per minute.
+
 3️⃣ **Damage variation range (float):** The range within which the damage values will vary.
+
 4️⃣ **Fire rate variation range (float):** The range within which the fire rate values will vary.
+
 5️⃣ **Fire rate step (float):** The step value for fire rate variations.
+
 6️⃣ **DPS range (float):** The range within which the calculated DPS values should fall.
 
 **Example Input Data**
