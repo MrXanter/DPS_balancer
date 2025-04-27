@@ -1,3 +1,7 @@
+THIS SCRIPT WAS MADE AS A JOKE, DO NOT TAKE IT SERIOUSLY 
+
+
+
 # 🔫 DPS Balancer Script
 
 ## 📖 Description
